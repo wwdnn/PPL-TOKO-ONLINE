@@ -24,7 +24,7 @@
     <li>
       <a href="#" class="logout">
         <i class='bx bx-log-out-circle'></i>
-        <span class="text">Logout</span>
+        <span class="text"></span>
       </a>
     </li>
   </ul>

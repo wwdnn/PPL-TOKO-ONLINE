@@ -32,6 +32,9 @@ $routes->set404Override();
 $routes->get('/', 'DashboardController::index');
 $routes->post('/dashboard/cart', 'DashboardController::addToCart');
 $routes->get('/cart', 'CartController::index');
+$routes->post('/cart/update', 'CartController::update');
+$routes->get('/cart/delete/(:any)', 'CartController::delete/$1');
+$routes->get('/cart/destroy', 'CartController::deleteAll');
 
 $routes->get('/carttes', 'DashboardController::cek');
 
