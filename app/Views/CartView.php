@@ -226,6 +226,7 @@
         btnCheckout.setAttribute('disabled', 'disabled');
         // change title tooltip
         $('[data-toggle="tooltip"]').attr('title', 'Tekan Tombol Update Terlebih Dahulu!!')
+        $('[data-toggle="tooltip"]').tooltip()
       } 
     })
   })
@@ -243,10 +244,7 @@
         btnCheckout.setAttribute('disabled', 'disabled');
         // when update is true, btn checkout disabled and tooltip show
         $('[data-toggle="tooltip"]').tooltip()
-      } else {
-        // when update is false, btn checkout enabled and tooltip hide
-        $('[data-toggle="tooltip"]').tooltip('hide')
-      }
+      } 
 
     })
   })
