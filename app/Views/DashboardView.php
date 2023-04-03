@@ -1,35 +1,5 @@
 <?php $this->extend('TemplateView'); ?>
 <?php $this->section('content'); ?>
-<!-- SIDEBAR -->
-<section id="sidebar">
-  <a href="#" class="brand">
-    <i class='bx bxs-smile'></i>
-    <span class="text">Foodie Wwdnn</span>
-  </a>
-  <ul class="side-menu top">
-    <li class="active">
-      <a href="/">
-        <i class='bx bxs-dashboard'></i>
-        <span class="text">Dashboard</span>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <i class='bx bxs-shopping-bag-alt'></i>
-        <span class="text">TokoKu</span>
-      </a>
-    </li>
-  </ul>
-  <ul class="side-menu">
-    <li>
-      <a href="#" class="logout">
-        <i class='bx bx-log-out-circle'></i>
-        <span class="text"></span>
-      </a>
-    </li>
-  </ul>
-</section>
-<!-- END SIDEBAR -->
 
 <!-- CONTENT -->
 <section id="content">
@@ -67,6 +37,14 @@
 
   <!-- MAIN -->
   <main>
+    <!-- success transaction -->
+    <?php if (session()->getFlashdata('success')) : ?>
+      <div class="alert alert-success" role="alert">
+      </div>
+    <?php endif; ?>
+    <!-- end success transaction -->
+
+
     <div class="head-title">
       <div class="left">
         <h1>Dashboard</h1>
@@ -114,6 +92,23 @@
 <!-- END CONTENT -->
 
 <script>
+
+  // sweet alert if success transaction
+  const alert = document.querySelector('.alert');
+  if (alert) {
+    Swal.fire({
+      icon: 'success',
+      text: 'Barang Berhasil Ditambahkan',
+      showConfirmButton: false,
+      customClass: {
+        container: 'position-absolute'
+      },
+      toast: true,
+      position: 'top-right',
+      timer: 1500
+    })
+  }
+
   const submitBtns = document.querySelectorAll('.btn');
   submitBtns.forEach(function(submitBtn) {
     submitBtn.addEventListener('click', function(event) {

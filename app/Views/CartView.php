@@ -1,41 +1,8 @@
 <?php $this->extend('TemplateView'); ?>
 <?php $this->section('content'); ?>
 
-<!-- SIDEBAR -->
-<section id="sidebar">
-  <a href="#" class="brand">
-    <i class='bx bxs-smile'></i>
-    <span class="text">Foodie Wwdnn</span>
-  </a>
-  <ul class="side-menu top">
-    <li class="active">
-      <a href="/">
-        <i class='bx bxs-dashboard'></i>
-        <span class="text">Dashboard</span>
-      </a>
-    </li>
-    <li>
-      <a href="#">
-        <i class='bx bxs-shopping-bag-alt'></i>
-        <span class="text">TokoKu</span>
-      </a>
-    </li>
-  </ul>
-  <ul class="side-menu">
-    <li>
-      <a href="#" class="logout">
-        <i class='bx bx-log-out-circle'></i>
-        <span class="text"></span>
-      </a>
-    </li>
-  </ul>
-</section>
-<!-- END SIDEBAR -->
-
-
 <!-- CONTENT -->
 <section id="content">
-
   <!-- NAVBAR -->
   <nav>
     <i class='bx bx-menu'></i>
@@ -52,10 +19,12 @@
       <?php
       $cart = \Config\Services::cart();
       $count_cart = 0;
+      $count_items_cart = 0;
 
       if ($cart->contents()) {
         foreach ($cart->contents() as $itemProduk) {
           $count_cart = $count_cart + $itemProduk['qty'];
+          $count_items_cart ++;
         }
       }
       ?>
@@ -168,8 +137,8 @@
                     <span>Rp <?= number_format($total, 0, ',', '.') ?></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center px-0">
-                    Ongkir
-                    <span>Gratis</span>
+                    Total Produk
+                    <span><?= $count_items_cart ?></span>
                   </li>
                   <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                     <div>
@@ -181,7 +150,7 @@
 
                 <div class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="bottom" title="Cek Lagi Yaa!!">
                   <button type="button" class="btn btn-primary btn-lg btn-block btnCheckout">
-                    checkout
+                    <a href="/checkout" class="text-white">Checkout</a>
                   </button>
                 </div>
 
@@ -243,6 +212,7 @@
       if (update) {
         btnCheckout.setAttribute('disabled', 'disabled');
         // when update is true, btn checkout disabled and tooltip show
+       $('[data-toggle="tooltip"]').attr('title', 'Tekan Tombol Update Terlebih Dahulu!!')
         $('[data-toggle="tooltip"]').tooltip()
       } 
 

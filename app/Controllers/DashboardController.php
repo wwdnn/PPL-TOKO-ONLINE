@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\DashboardModel as DashboardModel;
+use App\Models\BarangModel as BarangModel;
 
 class DashboardController extends BaseController
 {
     public function index()
     {
-        $model = new DashboardModel();
+        $model = new BarangModel();
 
         $data = [
             'barangs' => $model->getAllBarang()
